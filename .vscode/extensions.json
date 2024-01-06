@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "ms-python.debugpy",
+        "benjamin-simmonds.pythoncpp-debug"
+    ]
+}

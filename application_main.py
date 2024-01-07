@@ -8,7 +8,7 @@ from lib.logger import *
 if __name__ == '__main__':
     print("entered")
     print(len(sys.argv))
-    if len(sys.argv) < 5:
+    if len(sys.argv) < 8:
         print("bhai dhang se dal")
         sys.exit(-2)
     env = sys.argv[1]

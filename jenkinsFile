@@ -22,7 +22,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'sshpass-p$LABS_PSWscp-oStrictHostKeyChecking=no-r.$LABS_USR@g02.itversity.com:/home/itv007138/retailproject'
+        sh 'sshpass-p$LABS_PSWscp-oStrictHostKeyChecking=no-r.$LABS_USR@g01.itversity.com:/home/itv007138/retailproject'
       }
     }
   }

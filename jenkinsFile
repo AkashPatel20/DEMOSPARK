@@ -1,21 +1,29 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+  agentanyenvironment {
+    LABS = credentials('labcreds')
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'pip3install--userpipenv'
+        sh '/bitnami/jenkins/home/.local/bin/pipenv--rm||exit0'
+        sh '/bitnami/jenkins/home/.local/bin/pipenvinstall'
+      }
     }
+    stage('Test') {
+      steps {
+        sh '/bitnami/jenkins/home/.local/bin/pipenvrunpytest'
+      }
+    }
+    stage('Package') {
+      steps {
+        sh 'zip-rretailproject.zip.'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'sshpass-p$LABS_PSWscp-oStrictHostKeyChecking=no-r.$LABS_USR@g02.itversity.com:/home/itv007138/retailproject'
+      }
+    }
+  }
 }
